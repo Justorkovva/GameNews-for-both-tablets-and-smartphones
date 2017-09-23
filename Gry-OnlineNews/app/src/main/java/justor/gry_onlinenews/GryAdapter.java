@@ -69,10 +69,12 @@ public class GryAdapter extends RecyclerView.Adapter<GryAdapter.GryViewHolder> i
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent myIntent = new Intent(_context, Article.class);
+                    //here i can bind variables with data (but I did it in setElement method)
+                    final Context context=itemView.getContext();
+                    Intent myIntent = new Intent(context, Article.class);
                     myIntent.putExtra("url", url);
                     myIntent.putExtra("title", send_title);
-                    _context.startActivity(myIntent);
+                    context.startActivity(myIntent);
                 }
             });
         }

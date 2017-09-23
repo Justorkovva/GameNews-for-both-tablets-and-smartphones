@@ -10,10 +10,12 @@ public class MainActivity extends AppCompatActivity {
 
     public static String URL;
     public static CharSequence stat_title;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         final Button b1=(Button) findViewById(R.id.button1);
        final Button b2=(Button) findViewById(R.id.button2);
         final Button b3=(Button) findViewById(R.id.button3);
@@ -81,5 +83,7 @@ public class MainActivity extends AppCompatActivity {
                 URL="http://www.gry-online.pl/rss/galerie.xml";
                 stat_title=b7.getText();
             }});
+
+
     }
 }

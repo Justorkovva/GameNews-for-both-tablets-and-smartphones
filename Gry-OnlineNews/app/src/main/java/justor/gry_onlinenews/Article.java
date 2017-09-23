@@ -16,27 +16,18 @@ public class Article extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.article);
+
+        //setContentView(R.layout.article);
+        setTitle(getIntent().getStringExtra("title"));
+
+        ArticleFragment fragment = ArticleFragment.create(getIntent().getStringExtra("url"));
+
+        getFragmentManager()
+                .beginTransaction()
+                .add(android.R.id.content, fragment)
+                .commit();
+
         TextView textView=(TextView) findViewById(R.id.textView);
-
-        Intent myIntent=getIntent();
-        String url=myIntent.getStringExtra("url");
-        String title=myIntent.getStringExtra("title");
-
-        textView.setText(title);
-        WebView myWebView = (WebView) findViewById(R.id.webView);
-        myWebView.loadUrl(url);
-        myWebView.getSettings().setJavaScriptEnabled(true);
-        setTitle(title);
-
-        //open new urls in app
-        myWebView.setWebViewClient(new WebViewClient() {
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-                view.loadUrl(request.getUrl().toString());
-                return false;
-            }
-        });
 
         //progress bar disappears when something appears on the screen
         final ProgressBar progress = (ProgressBar) findViewById(R.id.progress2);
@@ -47,5 +38,11 @@ public class Article extends AppCompatActivity {
                 progress.setVisibility(View.GONE);
             }
         });
-    }
+
+            }
+
+
+
+
+
 }
