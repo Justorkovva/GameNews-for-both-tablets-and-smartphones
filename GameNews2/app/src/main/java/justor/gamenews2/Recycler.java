@@ -31,7 +31,7 @@ public class Recycler extends AppCompatActivity implements GryAdapter.URLLoader 
     public void load(String title, String url) {
         if (findViewById(R.id.articleFragment) != null) {
             ArticleFragment fragment = ArticleFragment.create(url);
-
+            setTitle(title);
             getFragmentManager()
                     .beginTransaction()
                     .replace(R.id.articleFragment, fragment)
