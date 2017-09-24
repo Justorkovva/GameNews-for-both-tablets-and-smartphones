@@ -35,7 +35,7 @@ public class MainFragment extends Fragment {
         final RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        _adapter = new GryAdapter(); // ( this, context)
+        _adapter = new GryAdapter((GryAdapter.URLLoader) getActivity());
         recyclerView.setAdapter(_adapter);
         _task = new GryTask(_adapter);
         _task.execute(URL);

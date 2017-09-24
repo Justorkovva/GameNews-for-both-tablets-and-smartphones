@@ -7,22 +7,27 @@ package justor.gamenews2;
         import android.view.View;
         import android.view.ViewGroup;
         import android.widget.TextView;
-
         import org.w3c.dom.Document;
         import org.w3c.dom.Element;
 
 public class GryAdapter extends RecyclerView.Adapter<GryAdapter.GryViewHolder> implements GryTask.DocumentConsumer {
 
-    private Document _document=null;
-    private static Context _context;
-    private Recycler _recycler;
 
 
-    public GryAdapter(Recycler recycler, Context context) {
-        _recycler = recycler;
-        this._context = context;
+    public interface URLLoader {
+        void load(String title, String url);
     }
-    public GryAdapter() {}
+
+    private final URLLoader _urlLoader;
+
+    private Document _document=null;
+
+    //public GryAdapter() {}
+
+
+    public GryAdapter(URLLoader urlloader) {
+        _urlLoader=urlloader;
+    }
 
     @Override
     public int getItemCount() {
@@ -54,7 +59,7 @@ public class GryAdapter extends RecyclerView.Adapter<GryAdapter.GryViewHolder> i
     }
 
 
-    public static class GryViewHolder extends RecyclerView.ViewHolder {
+    public class GryViewHolder extends RecyclerView.ViewHolder {
 
         private final TextView _title;
         public String url;
@@ -74,11 +79,11 @@ public class GryAdapter extends RecyclerView.Adapter<GryAdapter.GryViewHolder> i
                     Intent myIntent = new Intent(context, Article.class);
                     myIntent.putExtra("url", url);
                     myIntent.putExtra("title", send_title);
-                    context.startActivity(myIntent);
+                    _urlLoader.load(send_title,url);
+                  //  context.startActivity(myIntent);
                 }
             });
         }
-
 
         public void setElement(Element element)
         {_element=element;

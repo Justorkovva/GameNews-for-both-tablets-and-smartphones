@@ -37,13 +37,16 @@ public class Article extends AppCompatActivity {
 
         //progress bar disappears when something appears on the screen
         final ProgressBar progress = (ProgressBar) findViewById(R.id.progress2);
-        GryAdapter _adapter=new GryAdapter();
+        //GryAdapter.URLLoader t= new GryAdapter.URLLoader("title","title");
+
+        /*GryAdapter _adapter = new GryAdapter((GryAdapter.URLLoader) this);
         _adapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
             @Override
             public void onChanged() {
                 progress.setVisibility(View.GONE);
             }
         });
+        */
 
     }
 
