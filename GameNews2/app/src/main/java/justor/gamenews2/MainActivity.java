@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         final  Button b7=(Button) findViewById(R.id.button7);
 
 
-        //different RSS feeds for buttons
+        //different RSS feeds for buttons,
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,7 +84,5 @@ public class MainActivity extends AppCompatActivity {
                 URL="http://www.gry-online.pl/rss/galerie.xml";
                 stat_title=b7.getText();
             }});
-
-
     }
 }

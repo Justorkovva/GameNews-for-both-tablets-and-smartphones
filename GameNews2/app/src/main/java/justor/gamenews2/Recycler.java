@@ -1,17 +1,11 @@
 package justor.gamenews2;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ProgressBar;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 
-import static justor.gamenews2.MainActivity.URL;
 import static justor.gamenews2.MainActivity.stat_title;
 
 public class Recycler extends AppCompatActivity implements GryAdapter.URLLoader {
@@ -39,7 +33,6 @@ public class Recycler extends AppCompatActivity implements GryAdapter.URLLoader 
                     .replace(R.id.articleFragment, fragment)
                     .addToBackStack(null)
                     .commit();
-
         }
         else {
             Intent myIntent = new Intent(this, Article.class);
@@ -48,7 +41,6 @@ public class Recycler extends AppCompatActivity implements GryAdapter.URLLoader 
             startActivity(myIntent);
         }
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -63,12 +55,13 @@ public class Recycler extends AppCompatActivity implements GryAdapter.URLLoader 
                 this.finish();
                 this.startActivity(getIntent());
                 return true;
-            case (R.id.share):
+          /*  case (R.id.share):
                 Intent intent = new Intent(Intent.ACTION_SEND);
                 intent.setType("text/plain");
                 intent.putExtra(Intent.EXTRA_TEXT, getIntent().getStringExtra("url"));
                 startActivity(Intent.createChooser(intent, "Share!"));
                 return true;
+                */
         }
         return super.onOptionsItemSelected(item);
     }
@@ -86,7 +79,4 @@ public class Recycler extends AppCompatActivity implements GryAdapter.URLLoader 
 */
         this.finish();
     }
-
-
-
 }

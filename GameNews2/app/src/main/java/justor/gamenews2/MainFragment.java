@@ -9,9 +9,7 @@ package justor.gamenews2;
         import android.view.View;
         import android.view.ViewGroup;
         import android.widget.ProgressBar;
-
         import static justor.gamenews2.MainActivity.URL;
-        import static justor.gamenews2.MainActivity.stat_title;
 
 /**
  * Created by Lenovo on 23.09.2017.
@@ -25,14 +23,13 @@ public class MainFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstaceState) {
         return inflater.inflate(R.layout.fragment_main, container, false);
-
     }
 
     @Override
     public void onViewCreated (View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        final RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        final RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         _adapter = new GryAdapter((GryAdapter.URLLoader) getActivity());
@@ -41,7 +38,7 @@ public class MainFragment extends Fragment {
         _task.execute(URL);
 
 
-        final ProgressBar progress = (ProgressBar) view.findViewById(R.id.progress);
+        final ProgressBar progress = view.findViewById(R.id.progress);
         _adapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
             @Override
             public void onChanged() {
@@ -50,10 +47,6 @@ public class MainFragment extends Fragment {
 
         });
 
-/*
-        //set title in navigation bar
-        setTitle(stat_title);
-*/
     }
     @Override
     public void onDestroy() {

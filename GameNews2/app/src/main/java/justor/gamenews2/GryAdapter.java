@@ -13,7 +13,6 @@ package justor.gamenews2;
 public class GryAdapter extends RecyclerView.Adapter<GryAdapter.GryViewHolder> implements GryTask.DocumentConsumer {
 
 
-
     public interface URLLoader {
         void load(String title, String url);
     }
@@ -21,8 +20,6 @@ public class GryAdapter extends RecyclerView.Adapter<GryAdapter.GryViewHolder> i
     private final URLLoader _urlLoader;
 
     private Document _document=null;
-
-    //public GryAdapter() {}
 
 
     public GryAdapter(URLLoader urlloader) {
@@ -74,7 +71,7 @@ public class GryAdapter extends RecyclerView.Adapter<GryAdapter.GryViewHolder> i
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    //here i can bind variables with data (but I did it in setElement method)
+                    // i could have bind variables with data here (but I did it in setElement method)
                     final Context context=itemView.getContext();
                     Intent myIntent = new Intent(context, Article.class);
                     myIntent.putExtra("url", url);
