@@ -2,6 +2,7 @@ package justor.gamenews2;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -35,23 +36,7 @@ public class Article extends AppCompatActivity {
 
         TextView textView=(TextView) findViewById(R.id.textView);
 
-        //progress bar disappears when something appears on the screen
-        final ProgressBar progress = (ProgressBar) findViewById(R.id.progress2);
-        //GryAdapter.URLLoader t= new GryAdapter.URLLoader("title","title");
-
-        /*GryAdapter _adapter = new GryAdapter((GryAdapter.URLLoader) this);
-        _adapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
-            @Override
-            public void onChanged() {
-                progress.setVisibility(View.GONE);
-            }
-        });
-        */
-
     }
-
-
-
 
 
 }
