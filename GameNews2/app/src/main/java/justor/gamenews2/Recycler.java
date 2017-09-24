@@ -58,9 +58,35 @@ public class Recycler extends AppCompatActivity implements GryAdapter.URLLoader 
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        //switch (item.getItemId()) and cases  (R.id.name) normally, but here I have only one item
-        this.finish();
-        this.startActivity(getIntent());
-        return true;
+        switch (item.getItemId()) {
+            case (R.id.refresh):
+                this.finish();
+                this.startActivity(getIntent());
+                return true;
+            case (R.id.share):
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_TEXT, getIntent().getStringExtra("url"));
+                startActivity(Intent.createChooser(intent, "Share!"));
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void onBackPressed() {
+
+        // I think it's better to go back to mainactivity than to last article.
+        /*
+        if(getFragmentManager().getBackStackEntryCount() > 0)
+            getFragmentManager().popBackStack();
+        else
+            super.onBackPressed();
+
+*/
+        this.finish();
+    }
+
+
+
 }
